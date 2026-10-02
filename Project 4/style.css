@@ -1,0 +1,70 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 1rem;
+}
+
+/* Toolbar */
+.toolbar {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+#searchInput {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.7rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+#searchInput:focus {
+  outline: 2px solid blue;
+}
+
+/* Button */
+#toggleDetailsBtn {
+  padding: 0.7rem 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Hidden element */
+.hidden {
+  display: none;
+}
+
+/* Details */
+.details-box {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+/* Course grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  padding: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: white;
+}
+
+/* Character count */
+#charCount {
+  font-weight: bold;
+  color: blue;
+}
+
+#trimCount {
+  font-weight: bold;
+}

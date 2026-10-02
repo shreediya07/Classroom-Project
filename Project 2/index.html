@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Course Cards</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8fafc;
+      margin: 0;
+      padding: 2rem;
+    }
+
+    .cards {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      width: 280px;
+      padding: 1rem;
+      border: 1px solid #e2e8f0;
+      border-left-width: 6px;
+      border-radius: 12px;
+      box-sizing: border-box;
+      transition: all 0.2s;
+      background: white;
+    }
+
+    /* Different left-border colors */
+    .bca {
+      border-left-color: #1a56db;
+    }
+
+    .csit {
+      border-left-color: #0e9f6e;
+    }
+
+    .bit {
+      border-left-color: #ea580c;
+    }
+
+    /* Hover effect */
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    /* Keyboard focus */
+    .card:focus-visible {
+      outline: 2px solid blue;
+      outline-offset: 2px;
+    }
+
+    .countBtn {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 6px;
+      background: #2563eb;
+      color: white;
+      cursor: pointer;
+    }
+
+    .countBtn:hover {
+      opacity: 0.9;
+    }
+
+    #totalClicks {
+      margin-top: 1.5rem;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Our Courses</h1>
+
+  <section class="cards">
+
+    <article class="card bca" tabindex="0" data-course="BCA">
+      <h3>BCA</h3>
+      <p>Bachelor of Computer Applications focuses on computer applications, programming, and software development.</p>
+      <button class="countBtn">Clicked 0</button>
+    </article>
+
+    <article class="card csit" tabindex="0" data-course="CSIT">
+      <h3>CSIT</h3>
+      <p>BSc. CSIT combines computer science and information technology with programming and technical skills.</p>
+      <button class="countBtn">Clicked 0</button>
+    </article>
+
+    <article class="card bit" tabindex="0" data-course="BIT">
+      <h3>BIT</h3>
+      <p>Bachelor of Information Technology focuses on information systems, technology, programming, and networking.</p>
+      <button class="countBtn">Clicked 0</button>
+    </article>
+
+  </section>
+
+  <p id="totalClicks">Total: 0</p>
+
+  <script>
+    // Select all course cards
+    const cards = document.querySelectorAll(".card");
+
+    // Track total clicks
+    let total = 0;
+
+    cards.forEach(card => {
+      // Track clicks for each individual card
+      let count = 0;
+
+      const button = card.querySelector(".countBtn");
+
+      // Button click event
+      button.addEventListener("click", () => {
+        count++;
+        total++;
+
+        // Update individual button
+        button.textContent = `Clicked ${count}`;
+
+        // Update total clicks
+        document.querySelector("#totalClicks").textContent =
+          `Total: ${total}`;
+
+        // Change button background color on even/odd clicks
+        if (count % 2 === 0) {
+          button.style.backgroundColor = "#16a34a";
+        } else {
+          button.style.backgroundColor = "#2563eb";
+        }
+      });
+
+      // Log course name when mouse enters card
+      card.addEventListener("mouseenter", () => {
+        console.log(card.dataset.course);
+      });
+
+      // Press Enter when card is focused
+      card.addEventListener("keydown", event => {
+        if (event.key === "Enter") {
+          button.click();
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
